@@ -48,6 +48,10 @@ export const Animes = styled.div`
       color: #cbcbd6;
     }
   }
+
+  @media (min-width: 1400px){
+    max-width: 1000px;
+  }
 `;
 
 export const AvatarSide = styled.div`
@@ -77,12 +81,6 @@ export const AvatarSide = styled.div`
         height: 448px;
     }
   }
-
-  
-
-  
-
-  
 `;
 
 export const CardTitle = styled.div`
