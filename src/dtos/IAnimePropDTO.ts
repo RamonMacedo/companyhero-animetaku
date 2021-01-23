@@ -14,8 +14,19 @@ export default interface IAnimePropDTO {
     episodeCount: number;
     startDate: string;
     popularityRank: number;
-    posterImage: {};
-    coverImage: {};
+    posterImage: {
+      tiny: string;
+      small: string;
+      medium: string;
+      large: string;
+      original: string;
+    };
+    coverImage: {
+      tiny: string;
+      small: string;
+      large: string;
+      original: string;
+    };
     youtubeVideoId: string;
   }
 }

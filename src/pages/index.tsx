@@ -61,7 +61,7 @@ export default function Home({ trendAnimes }:TrendProps) {
         <Carousel effect="fade" autoplay autoplaySpeed={4000}>
           {trendAnimes.map(anime => (
             <div key={anime.id}>
-              <div style={{height: '480px', backgroundImage: `url(${anime.attributes.coverImage?.large})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
+              <div style={{height: '480px', backgroundImage: `url(${anime.attributes.coverImage.large})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
             </div>  
           ))}
         </Carousel>
