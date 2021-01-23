@@ -9,8 +9,6 @@ export const Animes = styled.div`
   align-self: center;
   justify-self: center;
 
-  padding: 0 12px;
-
   a {
     background: #fff;
     border-radius: 5px;
@@ -72,11 +70,11 @@ export const AvatarSide = styled.div`
     }
 
     @media (max-width: 490px) {
-        height: 400px;
+        height: 425px;
     }
 
     @media (max-width: 380px) {
-        height: 425px;
+        height: 448px;
     }
   }
 

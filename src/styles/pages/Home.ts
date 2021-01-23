@@ -6,7 +6,6 @@ interface FormProps {
 
 export const Form = styled.form<FormProps>`
   position: relative;
-  margin-top: 40px;
   max-width: 700px;
   width: 100%;
 
@@ -56,11 +55,14 @@ export const Error = styled.span`
 
 export const BoxAnimeLists = styled.div`
   display: flex;
-  flex: 1;
   flex-direction: row;
   align-items: flex-start;
-  
-  padding: 0 24px;
 
+  padding: 0 24px; 
+  
+  @media (max-width: 1200px){
+    flex-direction: column;
+    align-items: center;
+  }
 
 `;

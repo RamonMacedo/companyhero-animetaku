@@ -5,6 +5,11 @@ export const Animes = styled.div`
 
   display: flex;
   flex-direction: column;
+  margin-top: -30px;
 
-  margin-top: -12px;
+  @media (max-width: 1200px){
+    margin-top: unset;
+    max-width: 800px;
+  }
+
 `;

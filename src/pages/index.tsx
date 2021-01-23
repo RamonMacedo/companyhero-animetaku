@@ -42,7 +42,7 @@ export default function Home({ trendAnimes }:TrendProps) {
   return (
     <Layout>
       <Header>
-        <Content style={{display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '30px', flexDirection: 'column'}}>
+        <Content style={{display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '30px', flexDirection: 'column', width: '100%'}}>
 
           <Form hasError={!!inputError} onSubmit={heandlerAddRepository}>
             <Input
