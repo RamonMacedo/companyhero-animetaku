@@ -83,7 +83,7 @@ export default function Home({ trendAnimes }:TrendProps) {
 }
 
 export const getStaticProps: GetStaticProps<TrendProps> = async (context) => {
-  const response = await fetch('http://localhost:3000/api/trendanimes');
+  const response = await fetch('https://animetaku.vercel.app/api/trendanimes');
   const responseJson = await response.json();
 
   const responseData = responseJson.data.map(anime => {
