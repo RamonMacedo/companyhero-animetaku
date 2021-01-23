@@ -83,8 +83,8 @@ export default function Home({ trendAnimes }:TrendProps) {
 }
 
 export const getStaticProps: GetStaticProps<TrendProps> = async (context) => {
-  const response = await fetch('/api/trendanimes');
-  const responseJson = await response.json();
+  const data = await fetch('https://kitsu.io/api/edge/trending/anime');
+  const responseJson = await data.json();
 
   const responseData = responseJson.data.map(anime => {
     const data = anime.attributes.startDate;
