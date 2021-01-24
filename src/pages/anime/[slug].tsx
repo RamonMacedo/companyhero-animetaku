@@ -43,7 +43,7 @@ export default function TopAnime({ animeFound }: AnimesCategoriesrops){
 
               <Content>
                 {image ? (
-                  <div style={{height: '480px', backgroundImage: `url(https://i.ibb.co/QYJMmD8/confira-agora-os-25-melhores-animes-que-ja-foram-criados-1.png)`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
+                  <div style={{height: '480px', backgroundImage: `url(https://i.ibb.co/YP0d5J8/confira-agora-os-25-melhores-animes-que-ja-foram-criados-1.png)`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
                 ) : (
                   <Carousel effect="fade" autoplay autoplaySpeed={4000}>
                     {animeFound.attributes.coverImage !== null && (
