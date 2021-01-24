@@ -9,24 +9,26 @@ export default interface IAnimePropDTO {
       en: string;
       en_jp: string;
       ja_jp: string;
+      en_cn: string;
+      zh_cn: string;
     },
     status: string;
     episodeCount: number;
     startDate: string;
     popularityRank: number;
-    posterImage: {
+    posterImage?: {
       tiny: string;
       small: string;
       medium: string;
       large: string;
       original: string;
-    };
-    coverImage: {
+    } | null;
+    coverImage?: {
       tiny: string;
       small: string;
       large: string;
       original: string;
-    };
+    } | null;
     youtubeVideoId: string;
   }
 }

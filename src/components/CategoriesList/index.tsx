@@ -1,23 +1,22 @@
 import { Typography, Descriptions } from 'antd';
 
-const { Paragraph, Title } = Typography;
+const { Paragraph, Title} = Typography;
 
 import IAnimePropDTO from '../../dtos/IAnimePropDTO';
 
 import { Animes, CardTitle, AvatarSide } from './styles';
 
 interface TrendProps {
-  listAnimes: IAnimePropDTO[];
+  trendAnimes: IAnimePropDTO[];
 }
 
-export default function AnimeList({ listAnimes }:TrendProps) {
+export default function AnimeList({ trendAnimes }:TrendProps) {
   return (
     <div style={{display: 'flex', flexDirection: 'column', flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Animes>
-        {listAnimes.map((anime) => (
-          <a 
+        {trendAnimes.map((anime) => (
+          <a href={`/anime/${anime.attributes.slug}!${anime.id}`}
             key={anime.id}
-            href={`/anime/${anime.attributes.slug}!${anime.id}`}
           >
             <AvatarSide>
               <div style={{backgroundImage: `url(${anime.attributes.posterImage.large})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
@@ -27,11 +26,10 @@ export default function AnimeList({ listAnimes }:TrendProps) {
                 <Title level={4}>{anime.attributes.titles.en ? anime.attributes.titles.en : anime.attributes.titles.en_jp ? anime.attributes.titles.en_jp : anime.attributes.titles.ja_jp ? anime.attributes.titles.ja_jp : anime.attributes.titles.en_cn ? anime.attributes.titles.en_cn : anime.attributes.titles.zh_cn}</Title>
                 <small>{anime.attributes.titles.ja_jp}</small>
               </CardTitle>
-
+              {/* <strong>{anime.attributes.titles.en}</strong><small>{anime.attributes.titles.ja_jp}</small> */}
               <Paragraph style={{color: '#121210'}} ellipsis={{ rows: 2, expandable: false}}>
                 {anime.attributes.description}
               </Paragraph>
-
               <Descriptions contentStyle={{color: '#666'}} title="More Info" style={{padding: '0 16px'}}>
                 <Descriptions.Item label="Status" style={{textTransform: 'capitalize'}}>{anime.attributes.status}</Descriptions.Item>
                 <Descriptions.Item label="Episodes">{anime.attributes.episodeCount ? anime.attributes.episodeCount : 'Unavailable'}</Descriptions.Item>

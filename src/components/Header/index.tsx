@@ -1,10 +1,11 @@
 import { Container, Logo } from './styles';
 
-export default function Header({ children }) {
+export default function Header() {
   return (
     <Container>
-      <Logo src="https://i.ibb.co/3Tt063w/animetaku-logo2.png" />
-      {children}
+      <a href="/">
+        <Logo src="https://i.ibb.co/3Tt063w/animetaku-logo2.png" />
+      </a>
     </Container>
   )
 }

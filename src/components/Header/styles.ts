@@ -6,22 +6,14 @@ export const Container = styled.div`
   flex-direction: row;
 
   align-items: center;
+  justify-content: center;
 
   padding: 0 60px;
 
-  form {
-    margin-top: 40px;
+  a {
+    text-decoration: none;
+    cursor: pointer;
   }
-  
-  @media (max-width: 1200px){
-    width: 100%;
-    flex-direction: column;
-
-    form {
-      margin-top: unset;
-    }
-  }
-
 `;
 
 export const Logo = styled.img`
