@@ -12,6 +12,7 @@ import AnimeList from '../../../components/AnimeList';
 import IAnimeCategoryPropDTO from '../../../dtos/IAnimeCategoryPropDTO';
 import IAnimePropDTO from '../../../dtos/IAnimePropDTO';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 const { Content, Footer } = Layout;
 
@@ -21,6 +22,7 @@ interface AnimesCategoriesrops {
 }
 
 export default function Anime({ category, animesCategory }: AnimesCategoriesrops){
+  const [image, setImage] = useState(true);
   const { isFallback } = useRouter();
 
   return (
@@ -43,17 +45,22 @@ export default function Anime({ category, animesCategory }: AnimesCategoriesrops
               <Header />
 
               <Content>
-                <Carousel effect="fade" autoplay autoplaySpeed={4000}>
-                  {animesCategory.map(anime => {
-                    if(anime.attributes.coverImage !== null) {
-                      return (
-                        <div key={anime.id}>
-                          <div style={{height: '480px', backgroundImage: `url(${anime.attributes.coverImage.large})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
-                        </div>
-                      );
-                    }
-                  })}
-                </Carousel>
+              {image ? (
+                  <div style={{height: '480px', backgroundImage: `url(https://i.ibb.co/QYJMmD8/confira-agora-os-25-melhores-animes-que-ja-foram-criados-1.png)`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
+                ) : (
+                  <Carousel effect="fade" autoplay autoplaySpeed={4000}>
+                    {animesCategory.map(anime => {
+                      if(anime.attributes.coverImage !== null) {
+                        setImage(false);
+                        return (
+                          <div key={anime.id}>
+                            <div style={{height: '480px', backgroundImage: `url(${anime.attributes.coverImage.large})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
+                          </div>
+                        );
+                      }
+                    })}
+                  </Carousel>
+                )}
               </Content>
               <Layout>
                 <Layout>

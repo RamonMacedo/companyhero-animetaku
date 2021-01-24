@@ -10,6 +10,7 @@ import Header from '../components/Header';
 import AnimeList from '../components/AnimeList';
 import AnimeTrendList from '../components/AnimeTrendList';
 import SEO from '../components/SEO';
+import { useState } from 'react';
 
 const { Content, Footer } = Layout;
 
@@ -18,7 +19,9 @@ interface TrendProps {
   trendAnimes: IAnimePropDTO[];
 }
 
-export default function Home({ lastAnimes, trendAnimes, }:TrendProps) {  
+export default function Home({ lastAnimes, trendAnimes, }:TrendProps) {
+  const [image, setImage] = useState(true);
+
   return (
     <>
       <SEO
@@ -30,17 +33,22 @@ export default function Home({ lastAnimes, trendAnimes, }:TrendProps) {
           <Header />
 
           <Content>
-            <Carousel effect="fade" autoplay autoplaySpeed={4000}>
-              {lastAnimes.map(anime => {
-                if(anime.attributes.coverImage !== null) {
-                  return (
-                    <div key={anime.id}>
-                      <div style={{height: '480px', backgroundImage: `url(${anime.attributes.coverImage.large})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
-                    </div>
-                  );
-                }
-              })}
-            </Carousel>
+            {image ? (
+              <div style={{height: '480px', backgroundImage: `url(https://i.ibb.co/QYJMmD8/confira-agora-os-25-melhores-animes-que-ja-foram-criados-1.png)`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
+            ) : (
+              <Carousel effect="fade" autoplay autoplaySpeed={4000}>
+                {lastAnimes.map(anime => {
+                  if(anime.attributes.coverImage !== null) {
+                    setImage(false);
+                    return (
+                      <div key={anime.id}>
+                        <div style={{height: '480px', backgroundImage: `url(${anime.attributes.coverImage.large})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
+                      </div>
+                    );
+                  }
+                })}
+              </Carousel>
+            )}
           </Content>
           <Layout>
             <Layout>
