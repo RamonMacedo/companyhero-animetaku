@@ -22,8 +22,8 @@ export default function Home({ lastAnimes, trendAnimes, }:TrendProps) {
   return (
     <>
       <SEO
-        title={'Come on, find your anime!'}
-        image={'https://i.ibb.co/3Tt063w/animetaku-logo2.png'}
+        title='Come on, find your anime!'
+        image='https://i.ibb.co/3Tt063w/animetaku-logo2.png'
       />
       <AnimationContainer>
         <Layout>

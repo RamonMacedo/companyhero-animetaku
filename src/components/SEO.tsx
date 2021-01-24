@@ -20,7 +20,10 @@ export default function SEO({
 
   return (
     <Head>
+      <title>{pageTitle}</title>
 
+      { description && <meta name="description" content={description} />}
+      { pageImage && <meta name="image" content={pageImage} />}
       {!shouldIndexPage && <meta name="robots" content="noindex, nofollow" />}
 
       <meta httpEquiv="x-ua-compatible" content="IE=edge,chrome=1" />
