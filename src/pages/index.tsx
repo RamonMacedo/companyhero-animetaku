@@ -10,17 +10,16 @@ import Header from '../components/Header';
 import AnimeList from '../components/AnimeList';
 import AnimeTrendList from '../components/AnimeTrendList';
 import SEO from '../components/SEO';
-import { useState } from 'react';
 
 const { Content, Footer } = Layout;
 
 interface TrendProps {
   lastAnimes: IAnimePropDTO[];
   trendAnimes: IAnimePropDTO[];
+  backgroundImage: boolean;
 }
 
-export default function Home({ lastAnimes, trendAnimes, }:TrendProps) {
-  const [image, setImage] = useState(true);
+export default function Home({ lastAnimes, trendAnimes, backgroundImage }:TrendProps) {
 
   return (
     <>
@@ -33,13 +32,12 @@ export default function Home({ lastAnimes, trendAnimes, }:TrendProps) {
           <Header />
 
           <Content>
-            {image ? (
+            {backgroundImage ? (
               <div style={{height: '480px', backgroundImage: `url(https://i.ibb.co/YP0d5J8/confira-agora-os-25-melhores-animes-que-ja-foram-criados-1.png)`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
             ) : (
               <Carousel effect="fade" autoplay autoplaySpeed={4000}>
                 {lastAnimes.map(anime => {
                   if(anime.attributes.coverImage !== null) {
-                    setImage(false);
                     return (
                       <div key={anime.id}>
                         <div style={{height: '480px', backgroundImage: `url(${anime.attributes.coverImage.large})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
@@ -87,10 +85,17 @@ export const getStaticProps: GetStaticProps<TrendProps> = async (context) => {
     anime.attributes.startDate = format(parseISO(data), 'MM/dd/yyyy');
     return anime;
   });
+
+  let backgroundImage: boolean = true;
   
   const responseLastAnimeData = responseLastAnimeJson.data.map(anime => {
     const data = anime.attributes.startDate;
     anime.attributes.startDate = format(parseISO(data), 'MM/dd/yyyy');
+
+    if(anime.attributes.coverImage !== null){
+      backgroundImage = false;
+    }
+
     return anime;
   });
 
@@ -98,7 +103,8 @@ export const getStaticProps: GetStaticProps<TrendProps> = async (context) => {
   return {
     props: {
       lastAnimes: responseLastAnimeData,
-      trendAnimes: responseData
+      trendAnimes: responseData,
+      backgroundImage
     },
     revalidate: 60
   }

@@ -11,7 +11,6 @@ import Header from '../../components/Header';
 
 import IAnimePropDTO from '../../dtos/IAnimePropDTO';
 import SEO from '../../components/SEO';
-import { useState } from 'react';
 
 const { Content, Footer } = Layout;
 const { TabPane } = Tabs;
@@ -21,7 +20,6 @@ interface AnimesCategoriesrops {
 }
 
 export default function TopAnime({ animeFound }: AnimesCategoriesrops){
-  const [image, setImage] = useState(true);
   const { isFallback } = useRouter();
 
   return (
@@ -42,20 +40,15 @@ export default function TopAnime({ animeFound }: AnimesCategoriesrops){
               <Header />
 
               <Content>
-                {image ? (
-                  <div style={{height: '480px', backgroundImage: `url(https://i.ibb.co/YP0d5J8/confira-agora-os-25-melhores-animes-que-ja-foram-criados-1.png)`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
-                ) : (
-                  <Carousel effect="fade" autoplay autoplaySpeed={4000}>
-                    {animeFound.attributes.coverImage !== null && (
-                      <>
-                        {setImage(false)}
-                        <div key={animeFound.id}>
-                          <div style={{height: '480px', backgroundImage: `url(${animeFound.attributes.coverImage.large})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
-                        </div>
-                      </>
-                    )}
-                  </Carousel>
-                )}
+                <Carousel effect="fade" autoplay autoplaySpeed={4000}>
+                  {animeFound.attributes.coverImage !== null ? (
+                    <div key={animeFound.id}>
+                      <div style={{height: '480px', backgroundImage: `url(${animeFound.attributes.coverImage.large})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
+                    </div>
+                  ) : (
+                    <div style={{height: '480px', backgroundImage: `url(https://i.ibb.co/YP0d5J8/confira-agora-os-25-melhores-animes-que-ja-foram-criados-1.png)`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
+                  )}
+                </Carousel>
               </Content>
               <Layout>
                 <Layout>

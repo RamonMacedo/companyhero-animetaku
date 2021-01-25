@@ -12,17 +12,16 @@ import AnimeList from '../../../components/AnimeList';
 import IAnimeCategoryPropDTO from '../../../dtos/IAnimeCategoryPropDTO';
 import IAnimePropDTO from '../../../dtos/IAnimePropDTO';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
 
 const { Content, Footer } = Layout;
 
 interface AnimesCategoriesrops {
   category: IAnimeCategoryPropDTO;
   animesCategory: IAnimePropDTO[];
+  backgroundImage: boolean;
 }
 
-export default function Anime({ category, animesCategory }: AnimesCategoriesrops){
-  const [image, setImage] = useState(true);
+export default function Anime({ category, animesCategory, backgroundImage }: AnimesCategoriesrops){
   const { isFallback } = useRouter();
 
   return (
@@ -45,13 +44,12 @@ export default function Anime({ category, animesCategory }: AnimesCategoriesrops
               <Header />
 
               <Content>
-              {image ? (
+              {backgroundImage ? (
                   <div style={{height: '480px', backgroundImage: `url(https://i.ibb.co/YP0d5J8/confira-agora-os-25-melhores-animes-que-ja-foram-criados-1.png)`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
                 ) : (
                   <Carousel effect="fade" autoplay autoplaySpeed={4000}>
                     {animesCategory.map(anime => {
                       if(anime.attributes.coverImage !== null) {
-                        setImage(false);
                         return (
                           <div key={anime.id}>
                             <div style={{height: '480px', backgroundImage: `url(${anime.attributes.coverImage.large})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
@@ -96,17 +94,25 @@ export const getStaticProps: GetStaticProps<AnimesCategoriesrops> = async (conte
   
   const categoryData = await fetch(`https://kitsu.io/api/edge/categories/${slug}`);
   const { data: responseCategoryJson} = await categoryData.json();
+
+  let backgroundImage: boolean = true;
   
   const responseData = responseJson.data.map(anime => {
     const data = anime.attributes.startDate;
     anime.attributes.startDate = format(parseISO(data), 'MM/dd/yyyy');
+
+    if(anime.attributes.coverImage !== null){
+      backgroundImage = false;
+    }
+
     return anime;
   });
 
   return {
     props: {
       category: responseCategoryJson,
-      animesCategory: responseData
+      animesCategory: responseData,
+      backgroundImage
     },
     revalidate: 60
   }
