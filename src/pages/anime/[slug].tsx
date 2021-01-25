@@ -40,15 +40,11 @@ export default function TopAnime({ animeFound }: AnimesCategoriesrops){
               <Header />
 
               <Content>
-                <Carousel effect="fade" autoplay autoplaySpeed={4000}>
-                  {animeFound.attributes.coverImage !== null ? (
-                    <div key={animeFound.id}>
-                      <div style={{height: '480px', backgroundImage: `url(${animeFound.attributes.coverImage.large})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
-                    </div>
-                  ) : (
-                    <div style={{height: '480px', backgroundImage: `url(https://i.ibb.co/YP0d5J8/confira-agora-os-25-melhores-animes-que-ja-foram-criados-1.png)`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
-                  )}
-                </Carousel>
+                {animeFound.attributes.coverImage !== null ? (
+                  <div style={{height: '480px', backgroundImage: `url(${animeFound.attributes.coverImage.large})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
+                ) : (
+                  <div style={{height: '480px', backgroundImage: `url(https://i.ibb.co/YP0d5J8/confira-agora-os-25-melhores-animes-que-ja-foram-criados-1.png)`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
+                )}
               </Content>
               <Layout>
                 <Layout>
