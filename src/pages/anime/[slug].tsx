@@ -63,7 +63,7 @@ export default function TopAnime({ animeFound }: AnimesCategoriesrops){
                               </Descriptions>
                               <Descriptions contentStyle={{color: '#121210'}} title="More Info">
                                 <Descriptions.Item label="Status" style={{textTransform: 'capitalize'}}>{animeFound.attributes.status}</Descriptions.Item>
-                                <Descriptions.Item label="Episodes">{animeFound.attributes.episodeCount ? animeFound.attributes.episodeCount : 'Unavailable'}</Descriptions.Item>
+                                <Descriptions.Item label="Episodes">{animeFound.attributes.episodeCount}</Descriptions.Item>
                                 <Descriptions.Item label="Start Date">{animeFound.attributes.startDate}</Descriptions.Item>
                                 <Descriptions.Item label="Popularity">{animeFound.attributes.popularityRank}</Descriptions.Item>
                                 <Descriptions.Item label="Trailer">{!!animeFound.attributes.youtubeVideoId ? 'Yes' : 'No'}</Descriptions.Item>
@@ -108,7 +108,11 @@ export const getStaticProps: GetStaticProps<AnimesCategoriesrops> = async (conte
   const data = await fetch(`https://kitsu.io/api/edge/anime/${slugId}`);
   const { data: animeFound } = await data.json();
 
-  animeFound.attributes.startDate = format(parseISO(animeFound.attributes.startDate), 'MM/dd/yyyy');
+  const dataAnime = animeFound.attributes.startDate;
+  const countEpAnime = animeFound.attributes.episodeCount;
+  
+  countEpAnime !== null ? animeFound.attributes.episodeCount =  animeFound.attributes.episodeCount : 'Unavailable';
+  dataAnime !== null ? animeFound.attributes.startDate = format(parseISO(dataAnime), 'MM/dd/yyyy') : 'Unavailable';
 
   return {
     props: {

@@ -13,7 +13,7 @@ export default interface IAnimePropDTO {
       zh_cn: string;
     },
     status: string;
-    episodeCount: number;
+    episodeCount: string;
     startDate: string;
     popularityRank: number;
     posterImage?: {

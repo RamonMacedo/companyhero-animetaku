@@ -99,11 +99,9 @@ export const getStaticProps: GetStaticProps<AnimesCategoriesrops> = async (conte
   
   const responseData = responseJson.data.map(anime => {
     const data = anime.attributes.startDate;
-    anime.attributes.startDate = format(parseISO(data), 'MM/dd/yyyy');
-
-    if(anime.attributes.coverImage !== null){
-      backgroundImage = false;
-    }
+    
+    data !== null ? anime.attributes.startDate = format(parseISO(data), 'MM/dd/yyyy') : 'Unavailable';
+    anime.attributes.coverImage !== null && (backgroundImage = false);
 
     return anime;
   });
