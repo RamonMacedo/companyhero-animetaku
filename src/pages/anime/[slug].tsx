@@ -71,7 +71,7 @@ export default function TopAnime({ animeFound }: AnimesCategoriesrops){
                         {!!animeFound.attributes.youtubeVideoId && (
                           <TabPane tab="Trailer" key="2" style={{color: '#181818'}}>
                             <BoxInformation>
-                              <ReactPlayer url={`https://www.youtube.com/watch?v=${animeFound.attributes.youtubeVideoId}`} controls width="auto" height="auto" />
+                              <ReactPlayer url={`https://www.youtube.com/watch?v=${animeFound.attributes.youtubeVideoId}`} controls/>
                             </BoxInformation>
                           </TabPane>
                         )}

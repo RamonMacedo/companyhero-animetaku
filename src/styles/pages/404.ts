@@ -11,7 +11,7 @@ export const Container = styled.div`
   justify-content: center;
   
   width: 100%;
-  height: 100vh;
+  height: 100;
   background-color: rgba(0,0,0, 0.2);
 
   h1 {
