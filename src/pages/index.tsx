@@ -5,7 +5,7 @@ import IAnimePropDTO from '../dtos/IAnimePropDTO';
 import { GetStaticProps } from 'next';
 import { Layout , Carousel, Divider, BackTop} from 'antd';
 
-import { BoxAnimeLists, AnimationContainer } from '../styles/pages/Home';
+import { BoxAnimeLists, AnimationContainer, ContentImageHeader } from '../styles/pages/Home';
 import Header from '../components/Header';
 import AnimeList from '../components/AnimeList';
 import AnimeTrendList from '../components/AnimeTrendList';
@@ -33,14 +33,14 @@ export default function Home({ lastAnimes, trendAnimes, backgroundImage }:TrendP
 
           <Content>
             {backgroundImage ? (
-              <div style={{height: '480px', backgroundImage: `url(https://i.ibb.co/YP0d5J8/confira-agora-os-25-melhores-animes-que-ja-foram-criados-1.png)`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
+              <ContentImageHeader style={{ backgroundImage: `url(https://i.ibb.co/YP0d5J8/confira-agora-os-25-melhores-animes-que-ja-foram-criados-1.png)`}} />
             ) : (
               <Carousel effect="fade" autoplay autoplaySpeed={4000}>
                 {lastAnimes.map(anime => {
                   if(anime.attributes.coverImage !== null) {
                     return (
                       <div key={anime.id}>
-                        <div style={{height: '480px', backgroundImage: `url(${anime.attributes.coverImage.large})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
+                        <ContentImageHeader style={{ backgroundImage: `url(${anime.attributes.coverImage.large})`}} />
                       </div>
                     );
                   }
@@ -51,7 +51,7 @@ export default function Home({ lastAnimes, trendAnimes, backgroundImage }:TrendP
           <Layout>
             <Layout>
               <Content>
-                <Divider orientation="left" style={{color: '#fff'}}>Recent</Divider>
+                <Divider orientation="left" style={{color: '#181818'}}>Recent</Divider>
                 <BoxAnimeLists>
                   <AnimeList listAnimes={lastAnimes} />
                   <AnimeTrendList trendAnimes={trendAnimes} />
@@ -59,7 +59,7 @@ export default function Home({ lastAnimes, trendAnimes, backgroundImage }:TrendP
               </Content>
             </Layout>
             <BackTop />
-            <Footer>By Ramon Macêdo</Footer>
+            <Footer>By Ramon Macêdo 👨🏻‍🎤🤘🏻🚀 </Footer>
           </Layout>
         </Layout>
       </AnimationContainer>

@@ -6,7 +6,7 @@ import ReactPlayer from 'react-player'
 
 import { Layout , Carousel, Divider, Tabs, Descriptions } from 'antd';
 
-import { Image, AnimationContainer, AnimationLoadingContainer, Container, BoxInformation } from '../../styles/pages/Anime';
+import { Image, AnimationContainer, AnimationLoadingContainer, Container, ContainerLoading, BoxInformation, ContentImageHeader } from '../../styles/pages/Anime';
 import Header from '../../components/Header';
 
 import IAnimePropDTO from '../../dtos/IAnimePropDTO';
@@ -25,10 +25,12 @@ export default function TopAnime({ animeFound }: AnimesCategoriesrops){
   return (
     <>
       {isFallback ? (
-        <AnimationLoadingContainer>
-          <Image width="250px" height="auto" src="https://i.ibb.co/nDWk09r/raizo.png" />
-          <h1>Loading...</h1>
-        </AnimationLoadingContainer>
+        <ContainerLoading>
+          <AnimationLoadingContainer>
+            <Image width="250px" height="auto" src="https://i.ibb.co/nDWk09r/raizo.png" />
+            <h1>Loading...</h1>
+          </AnimationLoadingContainer>
+        </ContainerLoading>
       ) : (
         <>
           <SEO 
@@ -41,17 +43,17 @@ export default function TopAnime({ animeFound }: AnimesCategoriesrops){
 
               <Content>
                 {animeFound.attributes.coverImage !== null ? (
-                  <div style={{height: '480px', backgroundImage: `url(${animeFound.attributes.coverImage.large})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
+                  <ContentImageHeader style={{backgroundImage: `url(${animeFound.attributes.coverImage.large})`}} />
                 ) : (
-                  <div style={{height: '480px', backgroundImage: `url(https://i.ibb.co/YP0d5J8/confira-agora-os-25-melhores-animes-que-ja-foram-criados-1.png)`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
+                  <ContentImageHeader style={{backgroundImage: `url(https://i.ibb.co/YP0d5J8/confira-agora-os-25-melhores-animes-que-ja-foram-criados-1.png)`}} />
                 )}
               </Content>
               <Layout>
                 <Layout>
                   <Content>
-                    <Divider orientation="center" style={{color: '#fff'}}>{animeFound.attributes.titles.en ? animeFound.attributes.titles.en : animeFound.attributes.titles.en_jp ? animeFound.attributes.titles.en_jp : animeFound.attributes.titles.ja_jp ? animeFound.attributes.titles.ja_jp : animeFound.attributes.titles.en_cn ? animeFound.attributes.titles.en_cn : animeFound.attributes.titles.zh_cn}</Divider>                    
+                    <Divider orientation="center" style={{color: '#181818'}}>{animeFound.attributes.titles.en ? animeFound.attributes.titles.en : animeFound.attributes.titles.en_jp ? animeFound.attributes.titles.en_jp : animeFound.attributes.titles.ja_jp ? animeFound.attributes.titles.ja_jp : animeFound.attributes.titles.en_cn ? animeFound.attributes.titles.en_cn : animeFound.attributes.titles.zh_cn}</Divider>                    
                     <Container>
-                      <Tabs defaultActiveKey="1" centered color="#fff">
+                      <Tabs defaultActiveKey="1" centered color="#181818">
                         <TabPane tab="Informations" key="1">
                             <BoxInformation>
                               <Descriptions contentStyle={{color: '#121210'}} title="Details">
@@ -67,9 +69,9 @@ export default function TopAnime({ animeFound }: AnimesCategoriesrops){
                             </BoxInformation>
                         </TabPane>
                         {!!animeFound.attributes.youtubeVideoId && (
-                          <TabPane tab="Trailer" key="2" style={{color: '#fff'}}>
+                          <TabPane tab="Trailer" key="2" style={{color: '#181818'}}>
                             <BoxInformation>
-                              <ReactPlayer url={`https://www.youtube.com/watch?v=${animeFound.attributes.youtubeVideoId}`} />
+                              <ReactPlayer url={`https://www.youtube.com/watch?v=${animeFound.attributes.youtubeVideoId}`} controls width="auto" height="auto" />
                             </BoxInformation>
                           </TabPane>
                         )}
@@ -78,7 +80,7 @@ export default function TopAnime({ animeFound }: AnimesCategoriesrops){
                     </Container>
                   </Content>
                 </Layout>
-                <Footer>By Ramon Macêdo</Footer>
+                <Footer>By Ramon Macêdo 👨🏻‍🎤🤘🏻🚀 </Footer>
               </Layout>
             </Layout>
           </AnimationContainer>

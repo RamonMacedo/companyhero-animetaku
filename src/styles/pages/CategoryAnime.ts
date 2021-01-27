@@ -1,5 +1,15 @@
 import styled, { keyframes } from 'styled-components';
 
+export const ContainerLoading = styled.div`
+  display: flex;
+  flex: 1;
+
+  overflow: hidden;
+
+  align-items: center;
+  justify-content: center;
+`;
+
 export const BoxAnimeLists = styled.div`
   display: flex;
   flex-direction: row;
@@ -11,6 +21,25 @@ export const BoxAnimeLists = styled.div`
     flex-direction: column;
     align-items: center;
   }
+`;
+
+export const ContentImageHeader = styled.div`
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 480px;
+
+    @media (max-width: 768px) {
+      height: 390px;
+    }
+
+    @media (max-width: 576px) {
+      height: 270px;
+    }
+
+    @media (max-width: 450px) {
+        height: 200px;
+    }
 `;
 
 const apperFromLeft = keyframes`
@@ -41,6 +70,7 @@ const apperFromRight = keyframes`
 
 export const AnimationLoadingContainer = styled.div`
   display: flex;
+  overflow: hidden;
 
   flex: 1;
   flex-direction: column;
@@ -54,7 +84,7 @@ export const AnimationLoadingContainer = styled.div`
 
   h1 {
     margin-top: 20px;
-    color: #f6f6f6;
+    color: #181818;
     font-size: 20px;
   }
 

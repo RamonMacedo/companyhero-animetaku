@@ -13,6 +13,25 @@ export const BoxAnimeLists = styled.div`
   }
 `;
 
+export const ContentImageHeader = styled.div`
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 480px;
+
+    @media (max-width: 768px) {
+      height: 390px;
+    }
+
+    @media (max-width: 576px) {
+      height: 270px;
+    }
+
+    @media (max-width: 450px) {
+        height: 200px;
+    }
+`;
+
 const apperFromLeft = keyframes`
   from{
     opacity: 0;

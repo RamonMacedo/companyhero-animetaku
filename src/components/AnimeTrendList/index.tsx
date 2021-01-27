@@ -14,7 +14,7 @@ interface TrendProps {
 export default function AnimeList({ trendAnimes }:TrendProps) {
   return (
     <Animes>
-      <Divider orientation="right" style={{color: '#fff'}}>Top 10</Divider>
+      <Divider orientation="right" style={{color: '#181818'}}>Top 10</Divider>
       {trendAnimes.map((anime) => (
         <a
           key={anime.id}
@@ -34,7 +34,7 @@ export default function AnimeList({ trendAnimes }:TrendProps) {
           <Meta
             title={anime.attributes.titles.en ? anime.attributes.titles.en : anime.attributes.titles.en_jp ? anime.attributes.titles.en_jp : anime.attributes.titles.ja_jp ? anime.attributes.titles.ja_jp : anime.attributes.titles.en_cn ? anime.attributes.titles.en_cn : anime.attributes.titles.zh_cn}
             description={
-              <Paragraph style={{color: '#121210'}} ellipsis={{ rows: 2, expandable: false}}>
+              <Paragraph style={{color: '#181818'}} ellipsis={{ rows: 2, expandable: false}}>
                 {anime.attributes.description}
               </Paragraph>
             }

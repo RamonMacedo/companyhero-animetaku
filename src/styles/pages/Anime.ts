@@ -12,6 +12,35 @@ export const Container = styled.div`
   padding: 20px 40px;
 `;
 
+export const ContainerLoading = styled.div`
+  display: flex;
+  flex: 1;
+
+  overflow: hidden;
+
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ContentImageHeader = styled.div`
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 480px;
+
+    @media (max-width: 768px) {
+      height: 390px;
+    }
+
+    @media (max-width: 576px) {
+      height: 270px;
+    }
+
+    @media (max-width: 450px) {
+        height: 200px;
+    }
+`;
+
 export const BoxInformation = styled.div`
   border-radius: 5px;
   background-color: #fff;
@@ -65,7 +94,7 @@ export const AnimationLoadingContainer = styled.div`
 
   h1 {
     margin-top: 20px;
-    color: #f6f6f6;
+    color: #181818;
     font-size: 20px;
   }
 

@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 
 import { Layout , Carousel, Divider} from 'antd';
 
-import { BoxAnimeLists, AnimationContainer, AnimationLoadingContainer, Image } from '../../../styles/pages/CategoryAnime';
+import { BoxAnimeLists, AnimationContainer, AnimationLoadingContainer, ContainerLoading, ContentImageHeader, Image } from '../../../styles/pages/CategoryAnime';
 
 import SEO from '../../../components/SEO';
 import Header from '../../../components/Header';
@@ -28,10 +28,12 @@ export default function Anime({ category, animesCategory, backgroundImage }: Ani
     <>
       
       {isFallback ? (
-        <AnimationLoadingContainer>
-          <Image width="250px" height="auto" src="https://i.ibb.co/nDWk09r/raizo.png" />
-          <h1>Loading...</h1>
-        </AnimationLoadingContainer>
+        <ContainerLoading>
+          <AnimationLoadingContainer>
+            <Image width="250px" height="auto" src="https://i.ibb.co/nDWk09r/raizo.png" />
+            <h1>Loading...</h1>
+          </AnimationLoadingContainer>
+        </ContainerLoading>
       ) : (
         <>
           <SEO 
@@ -45,14 +47,14 @@ export default function Anime({ category, animesCategory, backgroundImage }: Ani
 
               <Content>
               {backgroundImage ? (
-                  <div style={{height: '480px', backgroundImage: `url(https://i.ibb.co/YP0d5J8/confira-agora-os-25-melhores-animes-que-ja-foram-criados-1.png)`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
+                  <ContentImageHeader style={{backgroundImage: `url(https://i.ibb.co/YP0d5J8/confira-agora-os-25-melhores-animes-que-ja-foram-criados-1.png)`}} />
                 ) : (
                   <Carousel effect="fade" autoplay autoplaySpeed={4000}>
                     {animesCategory.map(anime => {
                       if(anime.attributes.coverImage !== null) {
                         return (
                           <div key={anime.id}>
-                            <div style={{height: '480px', backgroundImage: `url(${anime.attributes.coverImage.large})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} />
+                            <ContentImageHeader style={{backgroundImage: `url(${anime.attributes.coverImage.large})`}} />
                           </div>
                         );
                       }
@@ -63,13 +65,13 @@ export default function Anime({ category, animesCategory, backgroundImage }: Ani
               <Layout>
                 <Layout>
                   <Content>
-                    <Divider orientation="left" style={{color: '#fff'}}>{category.attributes.title}</Divider>
+                    <Divider orientation="left" style={{color: '#181818'}}>{category.attributes.title}</Divider>
                     <BoxAnimeLists>
                       <AnimeList listAnimes={animesCategory} />
                     </BoxAnimeLists>
                   </Content>
                 </Layout>
-                <Footer>By Ramon Macêdo</Footer>
+                <Footer>By Ramon Macêdo 👨🏻‍🎤🤘🏻🚀 </Footer>
               </Layout>
             </Layout>
           </AnimationContainer>
